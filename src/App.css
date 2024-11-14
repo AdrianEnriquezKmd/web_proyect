@@ -1,25 +1,29 @@
+/* App.css */
+
+/* Fondo de la página completa */
+body {
+  background-color: #8b4f4f;  /* Color de fondo gris claro */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif; /* Establece una fuente global */
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  width: 100vw;
-  height: 100vh;
+  width: 100px;
+  height: 100px;
   pointer-events: none;
 }
 
-/*@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}*/
-
 .App-header {
-  background-color: #c0fcf7;
+  background-color: #70ddd4;  /* Fondo de color para el encabezado */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: first center;
+  align-items: center;
   justify-content: center;
   font-size: calc(20px + 2vmin);
   color: rgb(173, 0, 87);
@@ -28,12 +32,16 @@
 .App-link {
   color: #a50000;
 }
+.icono-animado {
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  z-index: 10;
+}
 
-/*@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}*/
+.mi-icono {
+  width: 2px;  /* Tamaño del ícono */
+  height: 2px;
+}
+
+/* Puedes agregar más estilos o cambiar los valores según sea necesario */
