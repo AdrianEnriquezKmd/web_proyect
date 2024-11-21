@@ -9,8 +9,6 @@
     color: white;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    margin: 0;
-    position: relative; /* Aseguramos que el encabezado tenga un contexto de apilamiento */
   }
   
   .small-header h2 {
@@ -18,140 +16,70 @@
     font-size: 18px;
   }
   
-  /* Mostrar los botones solo en escritorio */
+  /* Estilos de los botones */
   .header-buttons {
     display: flex;
     gap: 10px;
   }
   
-  /* Menú hamburguesa en dispositivos móviles */
-  .hamburger-menu {
-    display: none; /* Ocultamos el menú hamburguesa en escritorio */
-    position: relative; /* Aseguramos que tenga un contexto de apilamiento */
-  }
-  
-  .menu-toggle {
-    background-color: white;
-    border: none;
-    color: #0077ff;
-    font-size: 20px;
-    border-radius: 4px;
-    cursor: pointer;
+  .header-buttons button {
     padding: 5px 10px;
-    position: relative; /* Aseguramos que el icono de hamburguesa esté encima de los demás elementos */
-    z-index: 10;
-  }
-  
-  .dropdown-menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    padding: 10px;
-    z-index: 20; /* Establecemos un z-index alto para el menú desplegable */
-  }
-  
-  .dropdown-menu button {
-    padding: 8px 15px;
     border: none;
-    background-color: #0077ff;
-    color: white;
+    background-color: white;
+    color: #0077ff;
     border-radius: 4px;
     cursor: pointer;
-    margin-bottom: 5px;
     font-size: 14px;
   }
   
-  .dropdown-menu button:last-child {
-    margin-bottom: 0;
-  }
-  
-  .dropdown-menu button:hover {
-    background-color: #005bbb;
-  }
-  
-  .dropdown-menu.open {
-    display: flex;
-  }
-  
-  /* Estilos responsivos */
-  @media screen and (max-width: 768px) {
-    .header-buttons {
-      display: none; /* Ocultamos los botones en móvil */
-    }
-  
-    .hamburger-menu {
-      display: block; /* Mostramos el menú hamburguesa en móvil */
-    }
-  }
-  
-  /* Carrusel */
-  .main-container {
-    width: 500px;
-    height: 200px;
-    margin: 0 auto;
-    position: relative; /* Aseguramos que el carrusel esté en un contexto de apilamiento separado */
-    z-index: 1; /* Aseguramos que el carrusel tenga un z-index más bajo que el menú desplegable */
-  }
-  
-  .slider-container {
-    position: relative;
-    height: 100%;
-  }
-  
-  .dots-container {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .dot-container-item {
-    margin: 8px 3px;
+  /* Menú hamburguesa (solo en móviles) */
+  .hamburger-icon {
+    display: none;
+    font-size: 30px;
     cursor: pointer;
-    font-size: 12px;
+  }
+  
+  /* Menú desplegable en móviles */
+  .mobile-menu {
+    display: none;
+  }
+  
+  .mobile-menu.open {
+    display: block;
+  }
+  
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .mobile-menu ul li {
+    padding: 10px;
+    background-color: #0077ff;
+    color: white;
     text-align: center;
   }
   
-  /* Arrows */
-  .leftArrow {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    left: 32px;
-    font-size: 50px;
-    font-weight: 700;
-    color: #fff;
-    z-index: 1;
-    cursor: pointer;
-  }
+  /* Media queries para móvil */
+  @media (max-width: 768px) {
+    /* Mostrar menú hamburguesa en móvil */
+    .hamburger-icon {
+      display: block;
+    }
   
-  .rightArrow {
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    right: 32px;
-    font-size: 50px;
-    font-weight: 700;
-    color: #fff;
-    z-index: 1;
-    cursor: pointer;
-  }
+    /* Alinear los botones en una lista desplegable en móvil */
+    .header-buttons {
+      display: none;
+    }
   
-  .container-images {
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border: 1px solid #eee;
-    overflow: hidden;
-  }
+    /* Ajustes del carrusel para móvil */
+    .main-container {
+      width: 100%;
+      margin: 0;
+    }
   
-  div.active {
-    background: #ccc;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
+    .slider-container {
+      padding: 0 10px;
+    }
   }
   

@@ -70,6 +70,7 @@ img {
   border-radius: 20px;
   border: 1px solid #eee;
   overflow: hidden;
+  position: relative;
 }
 
 div.active {
@@ -83,7 +84,7 @@ div.active {
 @media screen and (max-width: 768px) {
   .main-container {
     width: 80%; /* Carrusel ocupa todo el ancho de la pantalla */
-    height: auto; /* Ajusta la altura automáticamente */
+    height: 200px; /* Ajusta la altura automáticamente */
   }
 
   .container-images {
@@ -102,11 +103,11 @@ div.active {
 
   .dots-container {
     font-size: 10px; /* Reduce el tamaño de los puntos */
-    margin-top: 10px; /* Espacio entre las imágenes y los puntos */
+    margin-top: 0px; /* Espacio entre las imágenes y los puntos */
   }
 
   img {
-    width: 115%; /* Imágenes ocupan el ancho total del contenedor */
+    width: 117%; /* Imágenes ocupan el ancho total del contenedor */
     height: auto; /* Mantiene la proporción de las imágenes */
   }
 }
