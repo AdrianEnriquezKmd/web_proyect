@@ -1,129 +1,157 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-body {
-  background-color: #ffffff;
-  font-family: Arial, sans-serif;
-}
-
+/* Encabezado pequeño */
 .small-header {
-  width: 100%;
-  padding: 20px;
-  background-color: #0077ff;
-  text-align: left;
-  font-size: 18px;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.small-header h2 {
-  margin: 0;
-  font-weight: normal;
-}
-
-.carousel-container {
-  width: 90%; /* Ajuste para móvil */
-  max-width: 800px;
-  height: auto; /* Dejar que se adapte a la proporción de las imágenes */
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.flyer-image {
-  width: 100%;
-  height: auto; /* Ajustar proporción automáticamente */
-  object-fit: contain;
-  border-radius: 10px;
-}
-
-.slick-dots {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.slick-dots li button:before {
-  font-size: 20px;
-  color: #7700ff;
-  opacity: 0.5;
-}
-
-.slick-dots li.slick-active button:before {
-  color: #b3ff00;
-  opacity: 1;
-}
-
-.slick-prev, .slick-next {
-  font-size: 30px;
-  color: #000000 !important;
-  background-color: rgba(255, 255, 255, 0.5) !important;
-  border-radius: 50%;
-  padding: 10px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1000;
-}
-
-.slick-prev {
-  left: 10px !important;
-}
-
-.slick-next {
-  right: 10px !important;
-}
-
-.body-content {
-  width: 100%;
-  padding: 20px;
-  background-color: #f4f4f4;
-  font-size: 16px;
-  color: #333;
-  text-align: center;
-  box-sizing: border-box;
-  margin-top: 20px;
-}
-
-/* Media Queries para Móviles */
-@media (max-width: 768px) {
-  .small-header {
-    text-align: center;
-    font-size: 16px;
-    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #0077ff;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    margin: 0;
+    position: relative; /* Aseguramos que el encabezado tenga un contexto de apilamiento */
   }
-
-  .carousel-container {
-    width: 100%; /* Ocupa todo el ancho */
-    height: auto;
+  
+  .small-header h2 {
+    margin: 0;
+    font-size: 18px;
   }
-
-  .flyer-image {
-    border-radius: 5px; /* Reducir radios en móvil */
+  
+  /* Mostrar los botones solo en escritorio */
+  .header-buttons {
+    display: flex;
+    gap: 10px;
   }
-
-  .slick-prev, .slick-next {
+  
+  /* Menú hamburguesa en dispositivos móviles */
+  .hamburger-menu {
+    display: none; /* Ocultamos el menú hamburguesa en escritorio */
+    position: relative; /* Aseguramos que tenga un contexto de apilamiento */
+  }
+  
+  .menu-toggle {
+    background-color: white;
+    border: none;
+    color: #0077ff;
     font-size: 20px;
-    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 5px 10px;
+    position: relative; /* Aseguramos que el icono de hamburguesa esté encima de los demás elementos */
+    z-index: 10;
   }
-
-  .body-content {
-    font-size: 14px;
+  
+  .dropdown-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
     padding: 10px;
+    z-index: 20; /* Establecemos un z-index alto para el menú desplegable */
   }
-}
+  
+  .dropdown-menu button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #0077ff;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .dropdown-menu button:last-child {
+    margin-bottom: 0;
+  }
+  
+  .dropdown-menu button:hover {
+    background-color: #005bbb;
+  }
+  
+  .dropdown-menu.open {
+    display: flex;
+  }
+  
+  /* Estilos responsivos */
+  @media screen and (max-width: 768px) {
+    .header-buttons {
+      display: none; /* Ocultamos los botones en móvil */
+    }
+  
+    .hamburger-menu {
+      display: block; /* Mostramos el menú hamburguesa en móvil */
+    }
+  }
+  
+  /* Carrusel */
+  .main-container {
+    width: 500px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative; /* Aseguramos que el carrusel esté en un contexto de apilamiento separado */
+    z-index: 1; /* Aseguramos que el carrusel tenga un z-index más bajo que el menú desplegable */
+  }
+  
+  .slider-container {
+    position: relative;
+    height: 100%;
+  }
+  
+  .dots-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .dot-container-item {
+    margin: 8px 3px;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
+  }
+  
+  /* Arrows */
+  .leftArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    left: 32px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .rightArrow {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 32px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .container-images {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow: hidden;
+  }
+  
+  div.active {
+    background: #ccc;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+  }
+  

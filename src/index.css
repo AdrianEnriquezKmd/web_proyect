@@ -1,13 +1,112 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* General styles for list and images */
+ul,
+li {
+  list-style: none;
+  white-space: nowrap;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+li {
+  display: inline;
+}
+
+img {
+  margin-top: -16px;
+}
+
+/* Main container */
+.main-container {
+  width: 500px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+/* Slider container */
+.slider-container {
+  position: relative;
+  height: 100%;
+}
+
+/* Dots container */
+.dots-container {
+  display: flex;
+  justify-content: center;
+}
+
+.dot-container-item {
+  margin: 8px 3px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Arrows */
+.leftArrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: 32px;
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.rightArrow {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: 32px;
+  font-size: 50px;
+  font-weight: 700;
+  color: #fff;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.container-images {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  overflow: hidden;
+}
+
+div.active {
+  background: #ccc;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+  .main-container {
+    width: 80%; /* Carrusel ocupa todo el ancho de la pantalla */
+    height: auto; /* Ajusta la altura automáticamente */
+  }
+
+  .container-images {
+    height: auto; /* Permite que las imágenes se ajusten dinámicamente */
+  }
+
+  .leftArrow {
+    left: 10px; /* Ajusta la posición de la flecha izquierda */
+    font-size: 30px; /* Reduce el tamaño de la flecha */
+  }
+
+  .rightArrow {
+    right: 10px; /* Ajusta la posición de la flecha derecha */
+    font-size: 30px; /* Reduce el tamaño de la flecha */
+  }
+
+  .dots-container {
+    font-size: 10px; /* Reduce el tamaño de los puntos */
+    margin-top: 10px; /* Espacio entre las imágenes y los puntos */
+  }
+
+  img {
+    width: 115%; /* Imágenes ocupan el ancho total del contenedor */
+    height: auto; /* Mantiene la proporción de las imágenes */
+  }
 }

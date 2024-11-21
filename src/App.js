@@ -1,55 +1,105 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { data } from './assets/data';
 import './App.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from 'react-slick';
-import flyer2 from './assets/flayer_1.jpg';
 
-function App() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    centerMode: true,
-    focusOnSelect: true,
+const App = () => {
+  const listRef = useRef();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false); // Estado para el menú desplegable
+
+  useEffect(() => {
+    const listNode = listRef.current;
+    const imgNode = listNode.querySelectorAll("li > img")[currentIndex];
+
+    if (imgNode) {
+      imgNode.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  }, [currentIndex]);
+
+  const scrollToImage = (direction) => {
+    setCurrentIndex((prevIndex) => {
+      if (direction === 'prev') {
+        return prevIndex === 0 ? 0 : prevIndex - 1;
+      } else {
+        return prevIndex === data.length - 1 ? prevIndex : prevIndex + 1;
+      }
+    });
+  };
+
+  const goToSlide = (slideIndex) => {
+    setCurrentIndex(slideIndex);
   };
 
   return (
-    <div className="App">
+    <div>
+      {/* Encabezado pequeño */}
       <header className="small-header">
-        <h2>Mi Encabezado Pequeño</h2>
-      </header>
-      <header className="App-header">
-        {/* Contenedor del carrusel con ancho limitado */}
-        <div className="carousel-container">
-          <Slider {...settings}>
-            <div>
-              <img
-                src="https://cms.cloudinary.vpsvc.com/images/w_1176,h_600,c_scale,w_1176,h_600/f_auto/f_auto,q_auto/v1675875429/ideas-and-advice-prod/es-es/Madame_Ramen_email_hero_FR_0568/Madame_Ramen_email_hero_FR_0568.jpg?_i=AA"
-                alt="Flyer 1"
-                className="flyer-image"
-              />
-            </div>
-            <div>
-              <img src={flyer2} alt="Flyer 2" className="flyer-image" />
-            </div>
-          </Slider>
+        <h2>LOGO</h2>
+        
+        {/* En escritorio mostramos los botones y en móvil mostramos el icono de hamburguesa */}
+        <div className="header-buttons">
+          <button>Botón 1</button>
+          <button>Botón 2</button>
+          <button>Botón 3</button>
+          <button>Botón 4</button>
+          <button>Botón 5</button>
+        </div>
+
+        {/* Menú hamburguesa en dispositivos móviles */}
+        <div className="hamburger-menu">
+          <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </button>
+          <div className={`dropdown-menu ${menuOpen ? "open" : ""}`}>
+            <button>Botón 1</button>
+            <button>Botón 2</button>
+            <button>Botón 3</button>
+            <button>Botón 4</button>
+            <button>Botón 5</button>
+          </div>
         </div>
       </header>
 
-      {/* Cuerpo de texto debajo del carrusel */}
-      <div className="body-content">
-        <h3>text</h3>
-        <p>
-          text
-        </p>
+      {/* Carrusel */}
+      <div className="main-container">
+        <div className="slider-container">
+          <div className="leftArrow" onClick={() => scrollToImage('prev')}>
+            &#10092;
+          </div>
+          <div className="rightArrow" onClick={() => scrollToImage('next')}>
+            &#10093;
+          </div>
+          <div className="container-images">
+            <ul ref={listRef}>
+              {data.map((item) => (
+                <li key={item.id}>
+                  <img
+                    src={item.imgUrl}
+                    width={500}
+                    height={280}
+                    alt={item.altText || 'Imagen del carrusel'}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="dots-container">
+            {data.map((_, idx) => (
+              <div
+                key={idx}
+                className={`dot-container-item ${idx === currentIndex ? 'active' : ''}`}
+                onClick={() => goToSlide(idx)}
+              >
+                &#9865;
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
